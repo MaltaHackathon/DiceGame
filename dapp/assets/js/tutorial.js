@@ -4,6 +4,12 @@ import manifest from "../../dapp.manifest.js"
 import template from "./tutorials_template.js"
 import DCWebapi from "dc-webapi"
 
+// import JSjquery from "../sys/jquery.min.js"
+// import JSmain from "../sys/main.js"
+// import JSprefixfree from "../sys/prefixfree.min.js"
+import "../sys/reset.min.css"
+import "../sys/roll.css"
+
 const playerPrivateKeys = {
   ropsten: "0xf67dfe6039ee029ae771d7e2da5a4324532ecc62cb59a292efc9cf49fd1b549e",
   rinkeby: "0x3F8B1B2FC40E744DA0D5D748654E19C5018CC2D43E1FD3EF9FD89E6F7FC652A0",
@@ -17,6 +23,15 @@ export default new class View {
   init() {
     localStorage.clear()
     const that = this
+
+    // document.getElementById("system").html(
+    //   // "<style>" + CSSreset + "</style>" +
+    //   // "<style>" + CSSroll + "</style>" +
+    //   // "<script>" + JSprfixfree + "</script>" +
+    //   // "<script>" + JSjquery + "</script>" +
+    //   // "<script>" + JSmain + "</script>"
+    //   "");
+
     document.getElementById("tutorial_mount_point").innerHTML = template
     this.root = document.getElementById("tutorial_app")
     this.setEvents()
