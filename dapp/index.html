@@ -18,9 +18,11 @@
 
 function startRoll() {
   $('#roll').click();
+  alert(1234);
 }
 
 function stopRoll(n) {
+  alert(5678)
   $('#stop_roll').click();
 
   if (n == 1) {
@@ -41,21 +43,16 @@ function stopRoll(n) {
   $('#platform').html(text);
 }
 
-$(document).on("ready", function() {
-  setTimeout(startRoll, 1000);
-  setTimeout(stopRoll, 3000, 6);
-}); 
+// $(document).on("ready", function() {
+//   setTimeout(startRoll, 1000);
+//   setTimeout(stopRoll, 3000, 6);
+// }); 
 
   </script>
 </head>
 
 <body>
-
-  <div id="system"></div>
-
   <div id="tutorial_mount_point"></div>
-
-  <!-- <script src="./dapp.logic.js"></script> -->
 </body>
 
 </html>

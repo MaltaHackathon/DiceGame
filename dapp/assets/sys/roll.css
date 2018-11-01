@@ -1,9 +1,9 @@
-body {
+/*body {
 	font-size:.9em;
 	font-family:sans-serif;
-}
+}*/
 
-@keyframes spin {
+/*@keyframes spin {
 	0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
 	16% { transform: translateZ(-100px) rotateX(180deg) rotateY(180deg) rotateZ(0deg); }
 	33% { transform: translateZ(-100px) rotateX(360deg) rotateY(90deg) rotateZ(180deg); }
@@ -33,7 +33,7 @@ body {
 	75% { transform: translate3d(200px,-50px,-400px) }
 	87% { transform: translate3d(0px,-100px,-800px) }
 	100% { transform: translate3d(-200px,-50px,-400px) }
-}
+}*/
 
 #roll:checked ~ #platform > #dice {
 	animation: spin-duplicate 2s infinite linear;
@@ -201,7 +201,7 @@ margin-top:100px;
 	background: -webkit-linear-gradient(top, #071a1e 0%,#274249 100%);
 	background: linear-gradient(to bottom, #071a1e 0%,#274249 100%);
 }
-
+/*
 label, input[type=checkbox]:before {
 	position: absolute;
 	overflow:hidden;
@@ -238,7 +238,7 @@ label:hover {
 	opacity:1;
 	box-shadow:0 0 18px rgba(255,255,255,.5);
 }
-
+*/
 label[for=roll] {
 	z-index:1;
 	text-shadow:0 -1px 0 #006699;

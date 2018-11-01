@@ -57,16 +57,15 @@ contract myDAppGame is oneStepGame {
     function game(uint[] _gameData, uint _bet, bytes _sigseed) public view returns(bool _win, uint _amount) {   
         checkGameData(_gameData, _bet);
         uint _min = 1;
-        uint _max = 3;
+        uint _max = 6;
         uint _rndNumber = generateRnd(_sigseed, _min, _max);
         //gameData[0] - player number    
         uint _playerNumber = _gameData[0];
-        uint _profit = 0;
+        uint _profit = getProfit(_gameData, _bet);
 
         // Game logic
-        if (_playerNumber == _rndNumber) {
+        if (_playerNumber > _rndNumber) {
             // player win profit
-            _profit = _bet * 2 - _bet;
             return(true, _profit);
         } else {
             // player lose bet
