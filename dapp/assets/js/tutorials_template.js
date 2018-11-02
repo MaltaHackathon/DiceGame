@@ -27,7 +27,7 @@ const template = `<div id="title">Games</div>
 		<input type="radio" name="choice" value="4"> 4 &nbsp;&nbsp;
 		<input type="radio" name="choice" value="5"> 5 &nbsp;&nbsp;
 		<input type="radio" name="choice" value="6"> 6 &nbsp;&nbsp;
-		<button class="play" id="play">Play</button> <!--  onclick="startRoll()" -->
+		<button class="play" id="play">Play</button>
 		<br>
 
 		<div id="wrapper">

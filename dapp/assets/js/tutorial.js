@@ -43,8 +43,6 @@ export default new class View {
 			})
 
 			this.DC_NETWORK = blockchainNetwork
-
-			// this.showStep3()
 		} catch (e) {
 			console.log(e)
 			return
@@ -61,7 +59,7 @@ export default new class View {
 		document.getElementById("tutorial_mount_point").innerHTML = template
 		this.root = document.getElementById("tutorial_app")
 		
-		document.getElementById("step-4").style.display = "none";
+		document.getElementById("step-4").style.display = "none"
 		document.getElementById("gamedice").onclick = async () => {
 			console.log('on click')
 			await this.initDao(playerPrivateKeys['local'])
@@ -70,176 +68,38 @@ export default new class View {
 				playerDeposit: 10,
 				gameData: [0, 0]
 			})
-			this.toggleGameView();
+			this.toggleGameView()
 		}
 
 		document.getElementById("play").onclick = async () => await this.playRound()
-		
-		//this.showStep3()
 	}
 
 	toggleGameView() {
-		document.getElementById("step-3").style.display = "none";
-		document.getElementById("step-4").style.display = "block";
+		document.getElementById("step-3").style.display = "none"
+		document.getElementById("step-4").style.display = "block"
 	}
 
 	setSpinnerStatus(status) {
 		document.getElementById("loader-spinner").style.display = status
 	}
 
-	// showStep3() {
-	// 	this.showStep(3)
-
-	// 	const btn = this.root.querySelector(".step-3 button")
-	// 	btn.onclick = async () => {
-	// 		this.setSpinnerStatus("block")
-	// 		document.getElementById('h1').innerHTML = "Dice";
-	// 		btn.disabled = true
-	// 		const deposit = this.root.querySelector('.step-3 input[name="deposit"]')
-	// 			.value
-	// 		try {
-	// 		} catch (e) {
-	// 			console.error(e)
-	// 		}
-	// 		// const connection = await App.startGame(deposit)
-	// 		let connection = ""
-	// 		try {
-	// 			await window.game.start()
-	// 			await window.game.connect({
-	// 				playerDeposit: deposit,
-	// 				gameData: [0, 0]
-	// 			})
-	// 		} catch (e) {
-	// 			this.setSpinnerStatus("none")
-	// 			this.log.innerHTML += `<p><b>ERROR</b>: ${"Can't connect, please repeat..."}</p>`
-	// 			btn.disabled = false
-	// 			console.error(e)
-	// 			console.warn("Can't connect, please repeat...")
-	// 			return
-	// 		}
-	// 		this.setSpinnerStatus("none")
-	// 		connection = "success"
-	// 		console.info("Connect result: success")
-	// 		this.showStep4(connection)
-	// 	}
-	// }
-
 	async playRound() {
-		document.getElementById("wrapper").innerHTML = '<input id="secondroll" name="roll" type="checkbox" style="display: none;"> <input id="roll" name="roll" type="checkbox" style="display: none;"> <label for="roll" style="display: none;">Shuffle!</label> <label for="secondroll" id="stop_roll" style="display: none;"><span>Stop!</span></label> <div id="platform"><div id="dice"> <div class="side front"> <div class="dot center"></div> </div> <div class="side front inner"></div> <div class="side top"> <div class="dot dtop dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side top inner"></div> <div class="side right"> <div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div> </div> <div class="side right inner"></div> <div class="side left"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side left inner"></div> <div class="side bottom"> <div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side bottom inner"></div> <div class="side back"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div> </div> <div class="side back inner"></div> <div class="side cover x"></div> <div class="side cover y"></div> <div class="side cover z"></div> </div></div>';
+		document.getElementById("wrapper").innerHTML = '<input id="secondroll" name="roll" type="checkbox" style="display: none;"> <input id="roll" name="roll" type="checkbox" style="display: none;"> <label for="roll" style="display: none;">Shuffle!</label> <label for="secondroll" id="stop_roll" style="display: none;"><span>Stop!</span></label> <div id="platform"><div id="dice"> <div class="side front"> <div class="dot center"></div> </div> <div class="side front inner"></div> <div class="side top"> <div class="dot dtop dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side top inner"></div> <div class="side right"> <div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div> </div> <div class="side right inner"></div> <div class="side left"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side left inner"></div> <div class="side bottom"> <div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side bottom inner"></div> <div class="side back"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div> </div> <div class="side back inner"></div> <div class="side cover x"></div> <div class="side cover y"></div> <div class="side cover z"></div> </div></div>'
 
-		document.getElementById("roll").click();
-		document.getElementById("play").innerHTML = 'Stop';
-		// document.getElementById("play").setAttribute('onclick', 'stopRoll(' + 5 + ')');
-		document.getElementById("play").setAttribute('id', 'stop');
+		document.getElementById("roll").click()
+		document.getElementById("play").innerHTML = 'Stop'
+		document.getElementById("play").setAttribute('id', 'stop')
 
 		document.getElementById("stop").onclick = async () => await this.stopRound()
 	}
 
-	// showStep4(connection) {
-	// 	this.showStep(4)
-
-	// 	// const table = document.querySelector('.step-4 table.play-log tbody')
-	// 	let playCnt = 0
-
-	// 	const endBtn = this.root.querySelector(".step-4 button.next")
-	// 	endBtn.disabled = true
-	// 	endBtn.onclick = async () => {
-	// 		this.showStep5()
-	// 		this.disconnect()
-	// 	}
-
-	// 	const btn = this.root.querySelector(".step-4 button.play")
-	// 	btn.onclick = async () => {
-	// 		document.getElementById("loader-spinner").innerHTML = '<div id="background"></div> <div id="wrapper"> <input id="secondroll" name="roll" type="checkbox"> <input id="roll" name="roll" type="checkbox"> <label for="roll">Shuffle!</label> <label for="secondroll" id="stop_roll"><span>Stop!</span></label> <div id="platform"> <div id="dice"> <div class="side front"> <div class="dot center"></div> </div> <div class="side front inner"></div> <div class="side top"> <div class="dot dtop dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side top inner"></div> <div class="side right"> <div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div> </div> <div class="side right inner"></div> <div class="side left"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side left inner"></div> <div class="side bottom"> <div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side bottom inner"></div> <div class="side back"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div> </div> <div class="side back inner"></div> <div class="side cover x"></div> <div class="side cover y"></div> <div class="side cover z"></div> </div> </div> </div>'
-	// 		this.setSpinnerStatus("block")
-	// 		startRoll();
-
-	// 		btn.disabled = true
-	// 		btn.innerHTML = "wait..."
-
-	// 		const bet = +document.querySelector('.step-4 input[name="bet"]').value
-	// 		const choice = +document.querySelector(
-	// 			'.step-4 input[name="choice"]:checked'
-	// 		).value
-	// 		try {
-	// 			const result = await window.game.play({
-	// 				userBet: bet,
-	// 				gameData: [choice],
-	// 				rndOpts: [[1, 6]]
-	// 			})
-	// 			// this.setSpinnerStatus("none")
-	// 			let td1 = document.createElement("td")
-	// 			let td2 = document.createElement("td")
-	// 			let td3 = document.createElement("td")
-	// 			let td4 = document.createElement("td")
-	// 			let td5 = document.createElement("td")
-	// 			let td6 = document.createElement("td")
-	// 			let tr = document.createElement("tr")
-	// 			document
-	// 				.getElementById("play-table-results")
-	// 				.getElementsByTagName("tbody")[0]
-	// 				.appendChild(tr)
-
-	// 			td3.innerHTML = 0
-
-	// 			tr.appendChild(td1)
-	// 			tr.appendChild(td2)
-	// 			tr.appendChild(td3)
-	// 			tr.appendChild(td4)
-	// 			tr.appendChild(td5)
-	// 			tr.appendChild(td6)
-
-	// 			for (let i in result) {
-	// 				switch (i) {
-	// 					case "balances":
-	// 						td6.innerHTML = `player ${result[i].player}
-	// 														 bankroller ${result[i].bankroller}`
-	// 						break
-	// 					case "params":
-	// 						td1.innerHTML = result[i].userBet
-	// 						td2.innerHTML = result[i].gameData[0]
-	// 						break
-	// 					case "profit":
-	// 						td5.innerHTML = result[i]
-	// 						break
-	// 					case "randomNums":
-	// 						td4.innerHTML = result[i][0]
-	// 						break
-	// 				}
-	// 			}
-	// 			// console.log(result)
-	// 		} catch (e) {
-	// 			// this.setSpinnerStatus("none")
-	// 			this.log.innerHTML += `<p><b>ERROR</b>: ${JSON.stringify(e)}</p>`
-	// 			console.error(e)
-	// 		}
-	// 		console.info("Play result:")
-
-	// 		endBtn.disabled = false
-	// 		if (playCnt++ > 6) {
-	// 			setTimeout(() => {
-	// 				this.showStep5()
-	// 			}, 3333)
-	// 			return
-	// 		}
-	// 		btn.disabled = false
-	// 		btn.innerHTML = "Play"
-	// 	}
-	// }
-
-	// showStep5() {
-	// 	this.showStep(5)
-	// 	this.root.querySelector(".step-5 button").onclick = this.disconnect
-	// }
-
 	async stopRound() {
-		console.log('!!!!!!!!');
+		// document.getElementById("newstyle").innerHTML = "#roll:checked ~ #platform > #dice {animation: spin-duplicate 2.7s infinite linear;} #roll:checked ~ #platform {animation: roll 2.1s infinite linear;}"
 
 		const bet = +document.querySelector('.step-4 input[name="bet"]').value
-		const choice = +document.querySelector(
-			'.step-4 input[name="choice"]:checked'
-		).value
+		const choice = +document.querySelector('.step-4 input[name="choice"]:checked').value
 		let hui;
+
 		try {
 			const result = await window.game.play({
 				userBet: bet,
@@ -281,12 +141,11 @@ export default new class View {
 						break
 				}
 			}
-		}
-		catch (ex) {
+		} catch (ex) {
 			console.log('jopa', ex)
 		}
 
-		document.getElementById("stop_roll").click();
+		document.getElementById("stop_roll").click()
 
 		if (hui == 1) {
 			var text = '<div class="side front"><div class="dot center"></div></div>';
@@ -302,12 +161,13 @@ export default new class View {
 			var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div></div>';
 		}
 
-		document.getElementById("platform").innerHTML = text;
-		document.getElementById("stop").innerHTML = 'Start';
-		// document.getElementById("stop").setAttribute('onclick', 'startRoll()');
-		document.getElementById("stop").setAttribute('id', 'play');
+		document.getElementById("platform").innerHTML = text
+		document.getElementById("stop").innerHTML = 'Start'
+		document.getElementById("stop").setAttribute('id', 'play')
 
 		document.getElementById("play").onclick = async () => await this.playRound()
+
+		// document.getElementById("newstyle").innerHTML = ""
 	}
 
 	async disconnect() {
