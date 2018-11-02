@@ -4,8 +4,6 @@ import manifest from "../../dapp.manifest.js"
 import template from "./tutorials_template.js"
 import DCWebapi from "dc-webapi"
 
-var mqtt = require('mqtt')
-
 // import JSjquery from "../sys/jquery.min.js"
 // import JSmain from "../sys/main.js"
 // import JSprefixfree from "../sys/prefixfree.min.js"
@@ -22,10 +20,9 @@ const playerPrivateKeys = {
 console.log(manifest)
 const WALLET_PWD = "1234"
 const DC_ID_PLATFORM = process.env.MACHINE_NAME || "DC_local"
+let isStarted = false
 
-const host = "10.50.0.208" // "test.mosquitto.org"
-const client  = mqtt.connect('mqtt://' + host, { port: 1883 })
-		
+
 console.log(process.env.MACHINE_NAME)
 export default new class View {
 	async initDao(inputedPrivKey, platformId = DC_ID_PLATFORM, blockchainNetwork = 'local') {
@@ -71,20 +68,23 @@ export default new class View {
 				playerDeposit: 10,
 				gameData: [0, 0]
 			})
-			
-			client.on('connect', function () {
-			    console.log("Connected to " + host);
-			    // Subscribe to intent topic
-			    client.subscribe('hermes/intent/#');
-			});
 
-			client.on('message', function (topic, message) {
-			  // message is Buffer
-			  console.log(topic)
-			  console.log(message.toString())
-			  this.playRound()
-			  //client.end()
-			})
+			var ws = new WebSocket('ws://localhost:40510');
+
+			ws.onopen = function () {
+				console.log('websocket is connected ...')
+				ws.send('connected')
+			}
+
+			ws.onmessage = (ev) => {
+				const res = JSON.parse(ev.data)
+				if (res.topic === "hermes/intent/kosyachniy:Start" && !isStarted) {
+					this.playRound()
+				}
+				else if (isStarted) {
+					this.stopRound()
+				}
+			}
 
 			document.getElementById("play").onclick = () => this.playRound()
 			this.toggleGameView()
@@ -105,6 +105,7 @@ export default new class View {
 	}
 
 	async playRound() {
+		isStarted = true;
 		document.getElementById("wrapper").innerHTML = '<input id="secondroll" name="roll" type="checkbox" style="display: none;"> <input id="roll" name="roll" type="checkbox" style="display: none;"> <label for="roll" style="display: none;">Shuffle!</label> <label for="secondroll" id="stop_roll" style="display: none;"><span>Stop!</span></label> <div id="platform"><div id="dice"> <div class="side front"> <div class="dot center"></div> </div> <div class="side front inner"></div> <div class="side top"> <div class="dot dtop dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side top inner"></div> <div class="side right"> <div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div> </div> <div class="side right inner"></div> <div class="side left"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side left inner"></div> <div class="side bottom"> <div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side bottom inner"></div> <div class="side back"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div> </div> <div class="side back inner"></div> <div class="side cover x"></div> <div class="side cover y"></div> <div class="side cover z"></div> </div></div>'
 
 		document.getElementById("roll").click()
@@ -115,6 +116,7 @@ export default new class View {
 	}
 
 	async stopRound() {
+		isStarted = false;
 		// document.getElementById("newstyle").innerHTML = "#roll:checked ~ #platform > #dice {animation: spin-duplicate 2.7s infinite linear;} #roll:checked ~ #platform {animation: roll 2.1s infinite linear;}"
 
 		const bet = +document.querySelector('.step-4 input[name="bet"]').value
