@@ -23,7 +23,7 @@ function stopRoll(n) {
 	$('#platform').html(text);
 }
 
-$(document).on("ready", function() {
-	setTimeout(startRoll, 1000);
-	setTimeout(stopRoll, 3000, 6);
-}); 
+// $(document).on("ready", function() {
+// 	setTimeout(startRoll, 1000);
+// 	setTimeout(stopRoll, 3000, 6);
+// }); 

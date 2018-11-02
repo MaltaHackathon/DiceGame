@@ -2,57 +2,61 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <meta http-equiv="cleartype" content="on" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="Cache-Control" content="no-cache" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="format-detection" content="address=no" />
+	<meta http-equiv="cleartype" content="on" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="address=no" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script>
 
 function startRoll() {
-  $('#roll').click();
-  alert(1234);
+	$('#wrapper').html('<input id="secondroll" name="roll" type="checkbox" style="display: none;"> <input id="roll" name="roll" type="checkbox" style="display: none;"> <label for="roll" style="display: none;">Shuffle!</label> <label for="secondroll" id="stop_roll" style="display: none;"><span>Stop!</span></label> <div id="platform"><div id="dice"> <div class="side front"> <div class="dot center"></div> </div> <div class="side front inner"></div> <div class="side top"> <div class="dot dtop dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side top inner"></div> <div class="side right"> <div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div> </div> <div class="side right inner"></div> <div class="side left"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side left inner"></div> <div class="side bottom"> <div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> </div> <div class="side bottom inner"></div> <div class="side back"> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div> </div> <div class="side back inner"></div> <div class="side cover x"></div> <div class="side cover y"></div> <div class="side cover z"></div> </div></div>');
+	$('#roll').click();
+	$('.play').html('Stop'); // $('#middle').html('<button onclick="stopRoll()">Stop</button>');
+	$('.play').attr('onclick', 'stopRoll(' + 5 + ')');
+	$('.play').attr('id', 'stop');
 }
 
 function stopRoll(n) {
-  alert(5678)
-  $('#stop_roll').click();
+	$('#stop_roll').click();
 
-  if (n == 1) {
-    alert(n);
-    var text = '<div class="side front"><div class="dot center"></div></div>';
-  } else if (n == 2) {
-    var text = '<div class="side front"><div class="dot dtop dleft"></div><div class="dot dbottom dright"></div></div>';
-  } else if (n == 3) {
-    var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div></div>';
-  } else if (n == 4) {
-    var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div></div>';
-  } else if (n == 5) {
-    var text = '<div class="side front"><div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div></div>';
-  } else if (n == 6) {
-    var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div></div>';
-  }
+	if (n == 1) {
+		var text = '<div class="side front"><div class="dot center"></div></div>';
+	} else if (n == 2) {
+		var text = '<div class="side front"><div class="dot dtop dleft"></div><div class="dot dbottom dright"></div></div>';
+	} else if (n == 3) {
+		var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot center"></div> <div class="dot dbottom dright"></div></div>';
+	} else if (n == 4) {
+		var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div></div>';
+	} else if (n == 5) {
+		var text = '<div class="side front"><div class="dot center"></div> <div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div></div>';
+	} else if (n == 6) {
+		var text = '<div class="side front"><div class="dot dtop dleft"></div> <div class="dot dtop dright"></div> <div class="dot dbottom dleft"></div> <div class="dot dbottom dright"></div> <div class="dot center dleft"></div> <div class="dot center dright"></div></div>';
+	}
 
-  $('#platform').html(text);
+	$('#platform').html(text);
+	$('.play').html('Start');
+	$('.play').attr('onclick', 'startRoll()');
+	$('.play').attr('id', 'play');
 }
 
 // $(document).on("ready", function() {
-//   setTimeout(startRoll, 1000);
-//   setTimeout(stopRoll, 3000, 6);
+//	 setTimeout(startRoll, 1000);
+//	 setTimeout(stopRoll, 3000, 6);
 // }); 
 
-  </script>
+	</script>
 </head>
 
 <body>
-  <div id="tutorial_mount_point"></div>
+	<div id="tutorial_mount_point"></div>
 </body>
 
 </html>
