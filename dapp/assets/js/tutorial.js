@@ -78,10 +78,65 @@ export default new class View {
 
 			ws.onmessage = (ev) => {
 				const res = JSON.parse(ev.data)
+				console.log(res)
+				if (res.topic === "hermes/intent/kosyachniy:one" && !isStarted) {
+					console.log(document.querySelector('.step-4 input[name="choice"]:checked'))
+					console.log(document.querySelector('#i1'))
+					document.querySelector('.step-4 input[name="choice"]:checked').checked = false
+
+					//var checked = document.querySelector('.step-4 input[name="choice"]:checked').value
+					document.querySelector('#i1').checked = true
+					//document.getElementById()
+				}
+				if (res.topic === "hermes/intent/kosyachniy:two" && !isStarted) {
+					console.log(document.querySelector('.step-4 input[name="choice"]:checked'))
+					console.log(document.querySelector('#i2'))
+					document.querySelector('.step-4 input[name="choice"]:checked').checked = false
+
+					//var checked = document.querySelector('.step-4 input[name="choice"]:checked').value
+					document.querySelector('#i2').checked = true
+					//document.getElementById()
+				}
+				if (res.topic === "hermes/intent/kosyachniy:three" && !isStarted) {
+					console.log(document.querySelector('.step-4 input[name="choice"]:checked'))
+					console.log(document.querySelector('#i3'))
+					document.querySelector('.step-4 input[name="choice"]:checked').checked = false
+
+					//var checked = document.querySelector('.step-4 input[name="choice"]:checked').value
+					document.querySelector('#i3').checked = true
+					//document.getElementById()
+				}
+				if (res.topic === "hermes/intent/kosyachniy:four" && !isStarted) {
+					console.log(document.querySelector('.step-4 input[name="choice"]:checked'))
+					console.log(document.querySelector('#i4'))
+					document.querySelector('.step-4 input[name="choice"]:checked').checked = false
+
+					//var checked = document.querySelector('.step-4 input[name="choice"]:checked').value
+					document.querySelector('#i4').checked = true
+					//document.getElementById()
+				}
+				if (res.topic === "hermes/intent/kosyachniy:five" && !isStarted) {
+					console.log(document.querySelector('.step-4 input[name="choice"]:checked'))
+					console.log(document.querySelector('#i5'))
+					document.querySelector('.step-4 input[name="choice"]:checked').checked = false
+
+					//var checked = document.querySelector('.step-4 input[name="choice"]:checked').value
+					document.querySelector('#i5').checked = true
+					//document.getElementById()
+				}
+				if (res.topic === "hermes/intent/kosyachniy:six" && !isStarted) {
+					console.log(document.querySelector('.step-4 input[name="choice"]:checked'))
+					console.log(document.querySelector('#i6'))
+					document.querySelector('.step-4 input[name="choice"]:checked').checked = false
+
+					//var checked = document.querySelector('.step-4 input[name="choice"]:checked').value
+					document.querySelector('#i6').checked = true
+					//document.getElementById()
+				}
 				if (res.topic === "hermes/intent/kosyachniy:Start" && !isStarted) {
 					this.playRound()
 				}
-				else if (isStarted) {
+				else if (res.topic === "hermes/intent/kosyachniy:Stop" && isStarted) {
 					this.stopRound()
 				}
 			}

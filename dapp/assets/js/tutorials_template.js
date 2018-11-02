@@ -42,12 +42,12 @@ const template = `<div id="title">Games</div>
 
 		<br>
 		Your number: &nbsp;&nbsp;
-		<input type="radio" name="choice" value="1"> 1 &nbsp;&nbsp;
-		<input type="radio" name="choice" value="2" checked> 2 &nbsp;&nbsp;
-		<input type="radio" name="choice" value="3"> 3 &nbsp;&nbsp;
-		<input type="radio" name="choice" value="4"> 4 &nbsp;&nbsp;
-		<input type="radio" name="choice" value="5"> 5 &nbsp;&nbsp;
-		<input type="radio" name="choice" value="6"> 6 &nbsp;&nbsp;
+		<input id="i1" type="radio" name="choice" value="1"> 1 &nbsp;&nbsp;
+		<input id="i2" type="radio" name="choice" value="2" checked> 2 &nbsp;&nbsp;
+		<input id="i3" type="radio" name="choice" value="3"> 3 &nbsp;&nbsp;
+		<input id="i4" type="radio" name="choice" value="4"> 4 &nbsp;&nbsp;
+		<input id="i5" type="radio" name="choice" value="5"> 5 &nbsp;&nbsp;
+		<input id="i6" type="radio" name="choice" value="6"> 6 &nbsp;&nbsp;
 		<button class="play" id="play">Play</button>
 		<br>
 
