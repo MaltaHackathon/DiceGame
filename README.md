@@ -1,33 +1,6 @@
-# Dice Game<br><br>
-## Inspiration
+## Tensegrity
 
-The problem which we solve is quite relevant for DAO.Casino. Our solution can be also easily modified to provide a huge number of applications with wonderful opportunities.
-
-## What it does
-
-We provide gamblers with zero-click transactions during the whole game session via Snips voice assistance and Ethereum MetaMask fork.
-
-## How we built it
-
-The game:<br>
-1) Take an example form DAO.Casino and run it;<br>
-2) Develop CSS visualization for dice;<br>
-3) Connect visualization to example;<br>
-4) Change the example to dice;<br>
-
-<br>Snips implementation:<br>
-1) Assemble a Snips board;<br>
-2) Run examples;<br>
-3) Develop voice assistance for the game;<br>
-
-<br>MetaMask fork with customizable process of txs confirmation:<br>
-1) Run Ethereum MetaMask localy;<br>
-2) Change it and debug it;<br>
-3) Game association with our MetaMask.<br>
-
-<br>Combine and test.
-
-## Challenges we ran into
+### Target
 
 **Grand prize:**<br>
 "Best overall Blockchain project".<br>
@@ -41,17 +14,38 @@ The game:<br>
 **Snips:**<br>
 "Best use of Snips technology".
 
-## Accomplishments that we're proud of
+### Description
+ 
+The problem which we solve is quite relevant for DAO.Casino. Our solution can be also easily modified to provide a huge number of applications with wonderful opportunities.
+<br>We provide gamblers with zero-click transactions during the whole game session via Snips voice assistance and Ethereum MetaMask fork.
 
-We have started it even without a scratch and reached three huge tasks in two days.
+### Quick Start Guide
 
-## What we learned
 
-How to create chrome extentions;<br>
-How to set up Snips voice assistance;<br>
-How to create games with DAO.Casino SDK.
 
-## What's next for Tensegrity
+#### Requirements
 
-1) Create easily customizable MetaMask for different applications;<br>
-2) Develop a number of popular games with our tools.
+>for example:
+ - Node 10.0
+ - Truffle 4.0
+
+
+ #### Start
+
+ ```
+ // for example
+npm i
+npm start
+truffle test
+ ```
+
+## Team
+
+ - Alexey Poloz (https://github.com/kosyachniy)
+ - Sergey Ankarenko (https://github.com/SergeyAnkarenko)
+ - Igor Sondors (https://github.com/IgorSondors)
+ - Savva Antoniuk (https://github.com/w0ckeezz)
+
+### Details for Reward
+
+ - 0xa955110eee9E85D9f50D367f5486EA12Fb1b9981
