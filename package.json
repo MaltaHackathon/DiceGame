@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "dc-webapi": "*",
+    "mqtt": "2.18.8",
     "postcss-flexbugs-fixes": "4.1.0",
     "react-dev-utils": "3.0.2"
   },

@@ -6,12 +6,33 @@ const template = `<div id="title">Games</div>
 
 <br>
 
-<div class="step step-3" id="step-3">
+<div class="step step-3" id="step-3 re1">
 		Game Deposit: <input type="number" name="deposit" value="10" min="5" max="20"><b>tokens</b>
 		<button class="next" id="gamedice">Dice</button>
 	</div>
 
 	<hr>
+
+<div class="step step-3">
+		Game Deposit: <input type="number" name="deposit" value="20" min="5" max="20"><b>tokens</b>
+		<button class="next" id="gamedice">Slots</button>
+	</div>
+
+	<hr class="step-3">
+
+<div class="step step-3">
+		Game Deposit: <input type="number" name="deposit" value="7" min="5" max="20"><b>tokens</b>
+		<button class="next" id="gamedice">Thimblerig</button>
+	</div>
+
+	<hr class="step-3">
+
+<div class="step step-3">
+		Game Deposit: <input type="number" name="deposit" value="16" min="5" max="20"><b>tokens</b>
+		<button class="next" id="gamedice">Wolf and Eggs</button>
+	</div>
+
+	<hr class="step-3">
 
 	<div class="step step-4" id="step-4">
 		<div>

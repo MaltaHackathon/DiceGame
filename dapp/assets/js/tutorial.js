@@ -4,6 +4,8 @@ import manifest from "../../dapp.manifest.js"
 import template from "./tutorials_template.js"
 import DCWebapi from "dc-webapi"
 
+var mqtt = require('mqtt')
+
 // import JSjquery from "../sys/jquery.min.js"
 // import JSmain from "../sys/main.js"
 // import JSprefixfree from "../sys/prefixfree.min.js"
@@ -21,9 +23,11 @@ console.log(manifest)
 const WALLET_PWD = "1234"
 const DC_ID_PLATFORM = process.env.MACHINE_NAME || "DC_local"
 
+const host = "10.50.0.208" // "test.mosquitto.org"
+const client  = mqtt.connect('mqtt://' + host, { port: 1883 })
+		
 console.log(process.env.MACHINE_NAME)
 export default new class View {
-
 	async initDao(inputedPrivKey, platformId = DC_ID_PLATFORM, blockchainNetwork = 'local') {
 		try {
 			const webapi = await new DCWebapi({
@@ -61,21 +65,38 @@ export default new class View {
 		
 		document.getElementById("step-4").style.display = "none"
 		document.getElementById("gamedice").onclick = async () => {
-			console.log('on click')
 			await this.initDao(playerPrivateKeys['local'])
 			await window.game.start()
 			await window.game.connect({
 				playerDeposit: 10,
 				gameData: [0, 0]
 			})
+			
+			client.on('connect', function () {
+			    console.log("Connected to " + host);
+			    // Subscribe to intent topic
+			    client.subscribe('hermes/intent/#');
+			});
+
+			client.on('message', function (topic, message) {
+			  // message is Buffer
+			  console.log(topic)
+			  console.log(message.toString())
+			  this.playRound()
+			  //client.end()
+			})
+
+			document.getElementById("play").onclick = () => this.playRound()
 			this.toggleGameView()
 		}
-
-		document.getElementById("play").onclick = async () => await this.playRound()
 	}
 
 	toggleGameView() {
-		document.getElementById("step-3").style.display = "none"
+		var al = document.getElementsByClassName("step-3");
+		for (var i=0; i < al.length; i++) {
+			console.log(al[i])
+			al[i].style.display = "none"
+		}
 		document.getElementById("step-4").style.display = "block"
 	}
 
@@ -126,7 +147,7 @@ export default new class View {
 			for (let i in result) {
 				switch (i) {
 					case "balances":
-						td5.innerHTML = `${result[i].player}`
+						td5.innerHTML = result[i].player / 10e17
 						break
 					case "params":
 						td1.innerHTML = result[i].userBet
